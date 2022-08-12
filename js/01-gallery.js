@@ -38,15 +38,22 @@ function onGalleryClick(evt) {
   const instance = basicLightbox.create(
     `<img src="${imgSource}" width="1280" height="720">`,
     {
-      closable: false,
+      onShow: () => {
+        addEventListener('keydown', closeWithEsc);
+      },
+    },
+    {
+      onClose: () => {
+        removeEventListener('keydown', closeWithEsc);
+      },
     },
   );
 
   instance.show();
 
-  document.addEventListener('keydown', evt => {
+  function closeWithEsc(evt) {
     if (evt.code === 'Escape') {
       instance.close();
     }
-  });
+  }
 }
