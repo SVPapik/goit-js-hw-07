@@ -26,11 +26,7 @@ galleryEl.addEventListener('click', onGalery);
 
 function onGalery(evt) {
   evt.PreventDefault();
-  if (evt.target.classList !== 'gallery_image') {
+  if (evt.target.classList !== 'gallery__image') {
     return;
   }
-
-  const selectedColor = event.target.dataset.color;
-  output.textContent = `Selected color: ${selectedColor}`;
-  output.style.color = selectedColor;
 }
