@@ -5,10 +5,10 @@ console.log(galleryItems);
 
 const galleryEl = document.querySelector('.gallery');
 
-function createGalleryMarkup(galleryItems) {
-  galleryItems.array.forEach(({ preview, original, description }) => {
-    return;
-    `<div class="gallery__item">
+function createGalleryMarkup() {
+  return galleryItems
+    .map(({ preview, original, description }) => {
+      return `<div class="gallery__item">
         <a class="gallery__link" href="${original}">
             <img class="gallery__image"
                 src="${preview}"
@@ -16,5 +16,21 @@ function createGalleryMarkup(galleryItems) {
             />
         </a>
       </div>`;
-  });
+    })
+    .join('');
+}
+
+galleryEl.insertAdjacentHTML('afterbegin', createGalleryMarkup());
+
+galleryEl.addEventListener('click', onGalery);
+
+function onGalery(evt) {
+  evt.PreventDefault();
+  if (evt.target.classList !== 'gallery_image') {
+    return;
+  }
+
+  const selectedColor = event.target.dataset.color;
+  output.textContent = `Selected color: ${selectedColor}`;
+  output.style.color = selectedColor;
 }
