@@ -28,8 +28,8 @@ function createGalleryMarkup() {
 
 function onGalleryClick(evt) {
   evt.preventDefault();
-  const imageEl = evt.target.classList.contains('gallery__image');
-  if (!imageEl) {
+
+  if (!evt.target.classList.contains('gallery__image')) {
     return;
   }
 
