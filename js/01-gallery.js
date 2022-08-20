@@ -39,21 +39,20 @@ function onGalleryClick(evt) {
     `<img src="${imgSource}" width="1280" height="720">`,
     {
       onShow: () => {
-        addEventListener('keydown', closeWithEsc);
+        window.addEventListener('keydown', closeWithEsc);
       },
     },
     {
       onClose: () => {
-        removeEventListener('keydown', closeWithEsc);
+        window.removeEventListener('keydown', closeWithEsc);
       },
     },
   );
-
-  instance.show();
 
   function closeWithEsc(evt) {
     if (evt.code === 'Escape') {
       instance.close();
     }
   }
+  instance.show();
 }
